@@ -100,6 +100,13 @@ h3 { font-size: 21px; line-height: 1.2; }
 .search-panel .button { width: 100%; margin-top: 4px; }
 .micro-note { display: flex; gap: 8px; align-items: flex-start; color: var(--muted); font-size: 10px; margin-top: 14px; }
 
+.lead-form { background: var(--white); border: 1px solid var(--line); padding: 34px; display: grid; gap: 16px; }
+.lead-form h3 { font-size: 25px; margin: 0; }
+.lead-form > p { color: var(--muted); font-size: 13px; margin: 0; }
+.lead-form-success { align-content: center; justify-items: start; color: var(--teal); }
+.lead-form-success h3 { color: var(--ink); }
+.form-error { display: flex; align-items: center; gap: 8px; color: var(--coral); font-size: 12px; font-weight: 700; margin: 0; }
+
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 44px; }
 .section-head h2 { max-width: 650px; margin-bottom: 0; }
 .section-head p { max-width: 470px; color: var(--muted); margin-bottom: 5px; }

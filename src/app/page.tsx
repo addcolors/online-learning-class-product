@@ -3,6 +3,7 @@ import { ArrowRight, BriefcaseBusiness, Building2, Check, Compass, GraduationCap
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Eyebrow, ProgramCard } from "@/components/ui";
+import { LeadForm } from "@/components/lead-form";
 import { countries, programs } from "@/lib/data";
 
 const intents = [
@@ -43,6 +44,8 @@ export default function Home() {
       <section className="section section-dark"><div className="shell banner"><div><Eyebrow light>For counselors and schools</Eyebrow><h2>Research once. Explain every recommendation.</h2><p className="lead" style={{ color: "#b7cac5" }}>Manage student pathways, collect official evidence and see when a published change may affect an active plan.</p><div className="hero-actions"><Link href="/for-counselors" className="button button-light">Explore the workspace</Link><Link href="/counselor" className="button button-outline" style={{ color: "white", borderColor: "#54706b" }}>View demo dashboard</Link></div></div><div className="banner-panel"><Landmark size={32} strokeWidth={1.4} /><div className="metric-row"><div className="metric"><strong>124</strong><span>Active plans</span></div><div className="metric"><strong>08</strong><span>Changes to review</span></div><div className="metric"><strong>96%</strong><span>Source coverage</span></div></div><p className="micro-note" style={{ color: "#9fb3ae" }}><Sparkles size={14} /> Demonstration metrics illustrate the proposed workflow.</p></div></div></section>
 
       <section className="section"><div className="shell banner"><div><Eyebrow>Trust is a product feature</Eyebrow><h2>Know what we know—and what we do not.</h2><p className="lead">Consequential information carries a source, applicable intake, last-checked date and review state. Unknown information stays unknown until it can be confirmed.</p><Link href="/methodology" className="text-arrow">Read our methodology <ArrowRight size={14} /></Link></div><div className="simple-card"><ShieldCheck size={34} color="var(--teal)" /><h3 style={{ marginTop: 24 }}>Information you can inspect</h3><p>Official facts, platform interpretation and counselor notes are labeled separately. Commercial relationships do not change organic eligibility guidance.</p><div className="badge-row"><span className="status status-verified">Source verified</span><span className="status status-reviewed">Editorially reviewed</span><span className="status status-needs-review">Confirmation needed</span></div></div></div></section>
+
+      <section className="section section-white"><div className="shell banner"><div><Eyebrow>Be first when your route opens</Eyebrow><h2>We are building the global education navigator.</h2><p className="lead">Coverage is opening in stages. Join the waitlist and we will tell you when your stage, subject and destination are ready.</p></div><LeadForm type="waitlist" /></div></section>
     </main>
     <SiteFooter />
   </>;

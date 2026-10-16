@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { EditorialPage } from "@/components/editorial-page";
+export const metadata: Metadata = { title: "Terms" };
+export default function Page() { return <EditorialPage eyebrow="Service boundaries" title="Terms" intro="This demonstration provides education planning information and workflows. It does not submit applications or make institutional decisions." sections={[{ title: "Guidance only", text: "Users must confirm current requirements, deadlines, fees, recognition and availability with the responsible institution or authority." }, { title: "Appropriate use", text: "Users may not use the platform to misrepresent academic records, circumvent institutional processes or access another person's private information." }, { title: "Before production launch", text: "The operator must obtain legal review and replace these product-boundary notes with complete terms for the jurisdictions served." }]} />; }

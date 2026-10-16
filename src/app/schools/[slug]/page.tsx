@@ -1,0 +1,8 @@
+import { notFound } from "next/navigation";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { Breadcrumbs, DataNote, Eyebrow, ProgramCard } from "@/components/ui";
+import { institutions, programs } from "@/lib/data";
+export const instant = false;
+export function generateStaticParams() { return institutions.filter((item) => item.stages.includes("Secondary")).map((item) => ({ slug: item.slug })); }
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const school = institutions.find((x) => x.slug === slug && x.stages.includes("Secondary")); if (!school) notFound(); const routes = programs.filter((x) => x.institutionSlug === school.slug); return <><SiteHeader /><main className="page"><section className="detail-hero"><div className="shell"><Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Schools", href: "/schools" }, { label: school.name }]} /><Eyebrow>{school.type}</Eyebrow><h1>{school.name}</h1><p className="lead">{school.summary}</p></div></section><section className="section-tight"><div className="shell"><DataNote checked={school.checked} status={school.status} /><div className="section-head" style={{ marginTop: 55 }}><div><Eyebrow>Covered school routes</Eyebrow><h2>Representative pathways</h2></div><p>Families must confirm current seat availability, placement, support and full fees directly with the school.</p></div><div className="program-grid">{routes.map((route) => <ProgramCard key={route.slug} program={route} />)}</div></div></section></main><SiteFooter /></>; }

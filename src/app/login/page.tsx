@@ -1,0 +1,7 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { Breadcrumbs, Eyebrow } from "@/components/ui";
+export const metadata: Metadata = { title: "Sign in", robots: { index: false } };
+export default function Page() { return <><SiteHeader /><main className="page"><section className="section"><div className="shell" style={{ maxWidth: 620 }}><Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Sign in" }]} /><div className="form-card"><Eyebrow>Your workspace</Eyebrow><h1 style={{ fontSize: 52 }}>Welcome back.</h1><p className="lead">Sign in to continue a pathway or open your organization workspace.</p><form className="grid" style={{ marginTop: 30 }}><div className="field"><label htmlFor="email">Email address</label><input id="email" type="email" placeholder="you@example.com" /></div><div className="field"><label htmlFor="password">Password</label><input id="password" type="password" placeholder="••••••••" /></div><button type="button" className="button button-dark">Sign in</button><button type="button" className="button button-outline">Email me a magic link</button></form><p className="micro-note" style={{ marginTop: 25 }}>Supabase credentials are enabled when environment variables are configured. Explore the <Link href="/workspace" className="text-arrow">learner</Link> or <Link href="/counselor" className="text-arrow">counselor</Link> demo now.</p></div></div></section></main><SiteFooter /></>; }

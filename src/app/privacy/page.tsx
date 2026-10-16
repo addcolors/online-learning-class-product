@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { EditorialPage } from "@/components/editorial-page";
+export const metadata: Metadata = { title: "Privacy" };
+export default function Page() { return <EditorialPage eyebrow="Data minimization" title="Privacy" intro="The product is designed to collect only the education context required for a pathway and to keep private records separate from the public catalog." sections={[{ title: "Learner control", text: "Learners can decide whether to share a pathway with a counselor organization. Access should be revocable and visible." }, { title: "Children's data", text: "The initial authenticated planner is for adults and parent-managed planning. It does not provide child-directed accounts." }, { title: "Production configuration", text: "Before a public launch, the operator must publish complete jurisdiction-appropriate privacy terms, retention periods, processors and account deletion procedures." }]} />; }

@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 const nav = [
   { label: "Explore", href: "/explore" },
@@ -13,6 +15,24 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
+  const router = useRouter();
+  const configured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
+  useEffect(() => {
+    if (!configured) return;
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => setSignedIn(Boolean(data.user)));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => setSignedIn(Boolean(session?.user)));
+    return () => subscription.unsubscribe();
+  }, [configured]);
+
+  async function signOut() {
+    await createClient().auth.signOut();
+    setSignedIn(false);
+    router.push("/");
+    router.refresh();
+  }
   return (
     <header className="site-header">
       <div className="utility-bar">
@@ -31,7 +51,14 @@ export function SiteHeader() {
         </nav>
         <div className="nav-actions">
           <Link href="/explore" className="icon-link" aria-label="Search"><Search size={19} /></Link>
-          <Link href="/login" className="text-link">Sign in</Link>
+          {signedIn ? (
+            <>
+              <Link href="/workspace" className="text-link">My workspace</Link>
+              <button type="button" className="text-link" onClick={() => void signOut()}>Sign out</button>
+            </>
+          ) : (
+            <Link href="/login" className="text-link">Sign in</Link>
+          )}
           <Link href="/plan" className="button button-dark button-small">Plan my path <span>→</span></Link>
           <button className="mobile-menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button>
         </div>
